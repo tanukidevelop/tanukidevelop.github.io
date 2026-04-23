@@ -3,70 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>たびぬり - ダウンロード</title>
+  <title>たびぬり - 旅して地図を塗ろう</title>
+  <meta name="description" content="訪問した市区町村をバックグラウンドGPSで自動記録し、地図上で塗りつぶし表示。全国1,741市区町村の制覇を目指そう。">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-      line-height: 1.8;
+      line-height: 1.7;
       color: #333;
       background: #fafafa;
-      padding: 24px 16px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .container {
-      max-width: 480px;
-      width: 100%;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 12px;
-      padding: 40px 28px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+    /* ===== Hero ===== */
+    .hero {
+      background: linear-gradient(135deg, #F28C38 0%, #d4732a 100%);
+      color: #fff;
       text-align: center;
+      padding: 60px 20px 48px;
     }
-    .app-icon {
-      width: 96px;
-      height: 96px;
+    .hero .app-icon {
+      width: 100px;
+      height: 100px;
       border-radius: 22%;
-      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      margin-bottom: 20px;
     }
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+    .hero .store-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero .store-badges a {
+      display: inline-block;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .hero .store-badges a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    .hero .store-badges img {
+      height: 60px;
+    }
+
+    /* ===== Screenshots carousel ===== */
+    .screenshots {
+      padding: 48px 0 40px;
+      background: #fff;
+    }
+    .screenshots h2 {
+      text-align: center;
+      font-size: 1.3rem;
       color: #222;
+      margin-bottom: 24px;
     }
-    .subtitle {
-      font-size: 0.9rem;
-      color: #666;
+    .carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 24px 16px;
+    }
+    .carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+    .carousel-item {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      width: 260px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .carousel-item:hover {
+      transform: translateY(-4px);
+    }
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== Features ===== */
+    .features {
+      padding: 48px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #222;
       margin-bottom: 32px;
     }
-    .store-badges {
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .feature-card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      color: #F28C38;
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      background: linear-gradient(135deg, #F28C38 0%, #d4732a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 48px 20px;
+    }
+    .cta h2 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .cta p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+    .cta .store-badges {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .store-badges a {
+    .cta .store-badges a {
       display: inline-block;
-      transition: opacity 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
     }
-    .store-badges a:hover {
-      opacity: 0.8;
+    .cta .store-badges a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
     }
-    .store-badges img {
-      height: 54px;
+    .cta .store-badges img {
+      height: 60px;
     }
-    .divider {
-      margin: 28px 0;
-      border: none;
-      border-top: 1px solid #eee;
-    }
+
+    /* ===== Footer ===== */
     .footer {
+      text-align: center;
+      padding: 24px 20px;
       font-size: 0.8rem;
       color: #999;
+      background: #f5f5f5;
     }
     .footer a {
       color: #999;
@@ -76,25 +190,34 @@
       text-decoration: underline;
     }
 
-    /* リダイレクト中のメッセージ（JS有効時は一瞬表示） */
+    /* ===== Redirecting overlay ===== */
     .redirecting {
       display: none;
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 20px;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(242,140,56,0.95);
+      color: #fff;
+      font-size: 1rem;
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .hero { padding: 44px 16px 36px; }
+      .hero h1 { font-size: 1.5rem; }
+      .carousel-item { width: 220px; }
+      .feature-grid { grid-template-columns: 1fr; }
     }
   </style>
 
-  <!-- ========== 設定 ========== -->
   <script>
-    // ストアURL（※公開後に実際のURLに差し替え）
     var APP_CONFIG = {
       ios: "https://apps.apple.com/app/id6761745492",
       android: "https://play.google.com/store/apps/details?id=com.tanukidevelop.tabinuri"
     };
   </script>
-  <!-- ========================== -->
-
   <script>
     (function() {
       var ua = navigator.userAgent;
@@ -103,39 +226,105 @@
       } else if (/Android/i.test(ua) && APP_CONFIG.android) {
         window.location.replace(APP_CONFIG.android);
       }
-      // PC等はそのままランディングページを表示
     })();
   </script>
 </head>
 <body>
-  <div class="container">
-    <p class="redirecting" id="redirecting">ストアへ移動しています...</p>
 
-    <!-- アプリアイコン（あれば） -->
-    <!-- <img src="../../assets/tabinuri-icon.png" alt="たびぬり" class="app-icon"> -->
+  <div class="redirecting" id="redirecting">ストアへ移動しています...</div>
 
+  <!-- Hero -->
+  <section class="hero">
+    <img src="images/app_icon_512.png" alt="たびぬり" class="app-icon">
     <h1>たびぬり</h1>
     <p class="subtitle">旅して地図を塗ろう</p>
-
     <div class="store-badges">
-      <a href="https://apps.apple.com/app/id6761745492" id="link-ios">
-        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp"
+      <a href="https://apps.apple.com/app/id6761745492">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/ja-jp"
              alt="App Storeからダウンロード">
       </a>
-      <a href="https://play.google.com/store/apps/details?id=com.tanukidevelop.tabinuri" id="link-android">
+      <a href="https://play.google.com/store/apps/details?id=com.tanukidevelop.tabinuri">
         <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
              alt="Google Playで手に入れよう"
-             style="height: 80px; margin: -13px 0;">
+             style="height: 90px; margin: -15px 0;">
       </a>
     </div>
+  </section>
 
-    <hr class="divider">
-
-    <div class="footer">
-      <a href="https://tanukidevelop.github.io">tanukidevelop</a>
-      &nbsp;|&nbsp;
-      <a href="../privacy-policy.html">プライバシーポリシー</a>
+  <!-- Screenshots -->
+  <section class="screenshots">
+    <h2>スクリーンショット</h2>
+    <div class="carousel">
+      <div class="carousel-item"><img src="images/slide_01.png" alt="歩いた街が、色づいていく" loading="lazy"></div>
+      <div class="carousel-item"><img src="images/slide_02.png" alt="旅の記録をひと目で確認" loading="lazy"></div>
+      <div class="carousel-item"><img src="images/slide_03.png" alt="みんなの旅と競い合おう" loading="lazy"></div>
+      <div class="carousel-item"><img src="images/slide_04.png" alt="いつ・どこを訪れたか振り返れる" loading="lazy"></div>
+      <div class="carousel-item"><img src="images/slide_05.png" alt="通知頻度も調整可能" loading="lazy"></div>
     </div>
-  </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>主な機能</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">&#128506;</div>
+        <h3>自動で地図を塗りつぶし</h3>
+        <p>バックグラウンドGPSで訪問した市区町村を自動記録。訪問回数が多いほど色が濃くなります。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128202;</div>
+        <h3>統計で振り返る</h3>
+        <p>全国47都道府県・1,741市区町村の制覇率を表示。月別訪問グラフや実績バッジで旅を振り返れます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#127942;</div>
+        <h3>ランキングで競おう</h3>
+        <p>全ユーザーの訪問数ランキングに参加。全期間・月間・週間・今日の4つの期間で順位を確認できます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128197;</div>
+        <h3>訪問履歴</h3>
+        <p>日付ごとに訪問した市区町村を時系列で表示。都道府県フィルタや市区町村名検索も可能です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128276;</div>
+        <h3>訪問通知</h3>
+        <p>新しい市区町村を初めて訪問したときに通知でお知らせ。通知頻度は3段階から選べます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128274;</div>
+        <h3>除外エリア設定</h3>
+        <p>自宅周辺など記録したくない地域を除外可能。プライバシーに配慮した設計です。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>無料でダウンロード</h2>
+    <p>全国1,741市区町村の制覇を目指して、旅の記録を始めよう</p>
+    <div class="store-badges">
+      <a href="https://apps.apple.com/app/id6761745492">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/ja-jp"
+             alt="App Storeからダウンロード">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.tanukidevelop.tabinuri">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+             alt="Google Playで手に入れよう"
+             style="height: 90px; margin: -15px 0;">
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="https://tanukidevelop.github.io">tanukidevelop</a>
+    &nbsp;|&nbsp;
+    <a href="../privacy-policy.html">プライバシーポリシー</a>
+    <br>
+    &copy; 2026 Logos Lab
+  </footer>
+
 </body>
 </html>
