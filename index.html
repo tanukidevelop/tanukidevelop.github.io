@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tanukidevelop - Flutterアプリ開発</title>
-  <meta name="description" content="tanukidevelopが開発・公開しているFlutterアプリの一覧。iOS / Android対応。">
+  <title>LOGOS LAB - ろごす研究所</title>
+  <meta name="description" content="ろごす研究所（LOGOS LAB）は、Flutter / iOS / Androidを活用したモバイルアプリケーションの企画・開発・ストア公開を行っている個人事業です。">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -14,81 +14,82 @@
       background: #fafafa;
     }
 
-    /* ===== Hero ===== */
-    .hero {
-      background: linear-gradient(135deg, #37474F 0%, #263238 100%);
-      color: #fff;
+    /* ===== Header ===== */
+    .header {
+      background: #fff;
       text-align: center;
-      padding: 60px 20px 48px;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid #eee;
     }
-    .hero h1 {
+    .header h1 {
       font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      color: #222;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
     }
-    .hero .subtitle {
-      font-size: 1rem;
-      opacity: 0.85;
+    .header .subtitle {
+      font-size: 0.95rem;
+      color: #888;
     }
 
-    /* ===== Apps grid ===== */
-    .apps {
-      padding: 48px 20px;
-      max-width: 900px;
+    /* ===== Content ===== */
+    .content {
+      max-width: 640px;
       margin: 0 auto;
+      padding: 40px 20px;
     }
-    .apps h2 {
-      text-align: center;
-      font-size: 1.3rem;
+    .content h2 {
+      font-size: 1.1rem;
       color: #222;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .content p {
+      font-size: 0.9rem;
+      color: #555;
       margin-bottom: 32px;
     }
-    .app-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+    .content ul {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 32px;
+      padding-left: 1.5em;
     }
-    .app-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 28px 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      text-align: center;
+    .content ul li {
+      margin-bottom: 6px;
+    }
+
+    /* ===== Info table ===== */
+    .info-table {
+      width: 100%;
+      font-size: 0.9rem;
+      border-collapse: collapse;
+      margin-bottom: 32px;
+    }
+    .info-table th {
+      text-align: left;
+      color: #555;
+      font-weight: 600;
+      padding: 10px 16px 10px 0;
+      white-space: nowrap;
+      vertical-align: top;
+      width: 100px;
+    }
+    .info-table td {
+      color: #555;
+      padding: 10px 0;
+    }
+    .info-table tr {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .info-table a {
+      color: #555;
       text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: block;
     }
-    .app-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-    .app-card .app-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 22%;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      margin-bottom: 16px;
-    }
-    .app-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 4px;
-      color: #222;
-    }
-    .app-card .app-subtitle {
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 12px;
-    }
-    .app-card .app-desc {
-      font-size: 0.82rem;
-      color: #666;
-      line-height: 1.6;
-    }
-    .app-card .platforms {
-      margin-top: 12px;
-      font-size: 0.75rem;
-      color: #aaa;
+    .info-table a:hover {
+      text-decoration: underline;
     }
 
     /* ===== Footer ===== */
@@ -99,57 +100,60 @@
       color: #999;
       background: #f5f5f5;
     }
-    .footer a {
-      color: #999;
-      text-decoration: none;
-    }
-    .footer a:hover {
-      text-decoration: underline;
-    }
 
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
-      .hero { padding: 44px 16px 36px; }
-      .hero h1 { font-size: 1.5rem; }
-      .app-grid { grid-template-columns: 1fr; }
+      .header { padding: 44px 16px 32px; }
+      .header h1 { font-size: 1.5rem; }
+      .content { padding: 32px 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>tanukidevelop</h1>
-    <p class="subtitle">Flutter Apps for iOS &amp; Android</p>
-  </section>
+  <!-- Header -->
+  <header class="header">
+    <h1>LOGOS LAB</h1>
+    <p class="subtitle">ろごす研究所</p>
+  </header>
 
-  <!-- Apps -->
-  <section class="apps">
-    <h2>Apps</h2>
-    <div class="app-grid">
+  <!-- Content -->
+  <main class="content">
+    <h2>事業概要</h2>
+    <p>ろごす研究所（LOGOS LAB）は、個人開発によるモバイルアプリケーションの企画・開発・ストア公開を行っている個人事業です。Flutter / iOS / Android を活用し、App Store および Google Play にて自社アプリを提供しています。</p>
 
-      <a class="app-card" href="card-match-log/download/">
-        <img src="card-match-log/download/images/app_icon_512.png" alt="TCG戦績" class="app-icon">
-        <h3>TCG戦績</h3>
-        <p class="app-subtitle">Card Match Log</p>
-        <p class="app-desc">カードゲームの対戦結果を手軽に記録・分析。デッキ別勝率、先攻後攻別勝率、相性表など充実の統計機能。</p>
-        <p class="platforms">iOS / Android</p>
-      </a>
+    <h2>事業内容</h2>
+    <ul>
+      <li>Flutter を用いたクロスプラットフォームアプリの企画・開発</li>
+      <li>App Store / Google Play でのアプリ公開・運営</li>
+      <li>iOS / Android ネイティブアプリケーション開発</li>
+      <li>モバイルアプリの設計・UI/UX 改善</li>
+    </ul>
 
-      <a class="app-card" href="tabinuri/download/">
-        <img src="tabinuri/download/images/app_icon_512.png" alt="たびぬり" class="app-icon">
-        <h3>たびぬり</h3>
-        <p class="app-subtitle">旅して地図を塗ろう</p>
-        <p class="app-desc">訪れた都道府県を塗りつぶして旅の記録を残そう。全国制覇を目指す地図塗りアプリ。</p>
-        <p class="platforms">iOS / Android</p>
-      </a>
-
-    </div>
-  </section>
+    <h2>組織情報</h2>
+    <table class="info-table">
+      <tr>
+        <th>屋号</th>
+        <td>ろごす研究所（LOGOS LAB）</td>
+      </tr>
+      <tr>
+        <th>所在地</th>
+        <td>大阪府</td>
+      </tr>
+      <tr>
+        <th>事業形態</th>
+        <td>個人事業</td>
+      </tr>
+      <tr>
+        <th>連絡先</th>
+        <td><a href="mailto:contact@logos-lab.net">contact@logos-lab.net</a></td>
+      </tr>
+    </table>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    &copy; 2026 Logos Lab
+    &copy; 2026 LOGOS LAB. All rights reserved.
   </footer>
 
 </body>
