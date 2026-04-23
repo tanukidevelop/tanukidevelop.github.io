@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tanukidevelop - Flutterアプリ開発</title>
+  <meta name="description" content="tanukidevelopが開発・公開しているFlutterアプリの一覧。iOS / Android対応。">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background: #fafafa;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      background: linear-gradient(135deg, #37474F 0%, #263238 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 48px;
+    }
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    /* ===== Apps grid ===== */
+    .apps {
+      padding: 48px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .apps h2 {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #222;
+      margin-bottom: 32px;
+    }
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .app-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .app-card .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 22%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      margin-bottom: 16px;
+    }
+    .app-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: #222;
+    }
+    .app-card .app-subtitle {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .app-card .app-desc {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.6;
+    }
+    .app-card .platforms {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.8rem;
+      color: #999;
+      background: #f5f5f5;
+    }
+    .footer a {
+      color: #999;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .hero { padding: 44px 16px 36px; }
+      .hero h1 { font-size: 1.5rem; }
+      .app-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>tanukidevelop</h1>
+    <p class="subtitle">Flutter Apps for iOS &amp; Android</p>
+  </section>
+
+  <!-- Apps -->
+  <section class="apps">
+    <h2>Apps</h2>
+    <div class="app-grid">
+
+      <a class="app-card" href="card-match-log/download/">
+        <img src="card-match-log/download/images/app_icon_512.png" alt="TCG戦績" class="app-icon">
+        <h3>TCG戦績</h3>
+        <p class="app-subtitle">Card Match Log</p>
+        <p class="app-desc">カードゲームの対戦結果を手軽に記録・分析。デッキ別勝率、先攻後攻別勝率、相性表など充実の統計機能。</p>
+        <p class="platforms">iOS / Android</p>
+      </a>
+
+      <a class="app-card" href="tabinuri/download/">
+        <img src="tabinuri/download/images/app_icon_512.png" alt="たびぬり" class="app-icon">
+        <h3>たびぬり</h3>
+        <p class="app-subtitle">旅して地図を塗ろう</p>
+        <p class="app-desc">訪れた都道府県を塗りつぶして旅の記録を残そう。全国制覇を目指す地図塗りアプリ。</p>
+        <p class="platforms">iOS / Android</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2026 Logos Lab
+  </footer>
+
+</body>
+</html>
