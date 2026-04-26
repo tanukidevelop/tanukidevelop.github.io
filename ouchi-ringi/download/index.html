@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おうち稟議 - 家族のお金の相談をもっとスムーズに</title>
+  <meta name="description" content="家庭内の購入申請・承認をアプリで管理。家族間のお金の相談をスムーズにする稟議アプリ。">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background: #fafafa;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      background: linear-gradient(135deg, #8BD4C0 0%, #6bb8a4 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 48px;
+    }
+    .hero .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 22%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+    .hero .store-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero .store-badges a {
+      display: inline-block;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .hero .store-badges a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    .hero .store-badges img {
+      height: 60px;
+    }
+
+    /* ===== Invite Code ===== */
+    .invite-section {
+      max-width: 480px;
+      margin: -24px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+      display: none;
+    }
+    .invite-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    .invite-card .invite-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    .invite-card .invite-code {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 8px;
+      color: #4a9e8a;
+      margin-bottom: 12px;
+    }
+    .invite-card .invite-hint {
+      font-size: 0.8rem;
+      color: #999;
+      line-height: 1.5;
+    }
+    .invite-card .copy-btn {
+      margin-top: 12px;
+      padding: 8px 24px;
+      border: 1px solid #8BD4C0;
+      background: transparent;
+      color: #4a9e8a;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .invite-card .copy-btn:hover {
+      background: #f0faf7;
+    }
+
+    /* ===== Features ===== */
+    .features {
+      padding: 48px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #222;
+      margin-bottom: 32px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .feature-card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      color: #4a9e8a;
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      background: linear-gradient(135deg, #8BD4C0 0%, #6bb8a4 100%);
+      color: #fff;
+      text-align: center;
+      padding: 48px 20px;
+    }
+    .cta h2 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .cta p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+    .cta .store-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cta .store-badges a {
+      display: inline-block;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .cta .store-badges a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    .cta .store-badges img {
+      height: 60px;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.8rem;
+      color: #999;
+      background: #f5f5f5;
+    }
+    .footer a {
+      color: #999;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .hero { padding: 44px 16px 36px; }
+      .hero h1 { font-size: 1.5rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .invite-card .invite-code { font-size: 1.6rem; letter-spacing: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="images/app_icon_512.png" alt="おうち稟議" class="app-icon">
+    <h1>おうち稟議</h1>
+    <p class="subtitle">家族のお金の相談をもっとスムーズに</p>
+    <div class="store-badges">
+      <a href="https://play.google.com/store/apps/details?id=com.tanukidevelop.ouchiRingi">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+             alt="Google Playで手に入れよう"
+             style="height: 90px; margin: -15px 0;">
+      </a>
+    </div>
+  </section>
+
+  <!-- Invite Code (shown only when ?code= is present) -->
+  <section class="invite-section" id="inviteSection">
+    <div class="invite-card">
+      <p class="invite-label">あなたはグループに招待されています</p>
+      <div class="invite-code" id="inviteCode"></div>
+      <button class="copy-btn" id="copyBtn">コードをコピー</button>
+      <p class="invite-hint">アプリをインストールして起動後、<br>グループ参加画面でこの招待コードを入力してください</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>主な機能</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">&#128176;</div>
+        <h3>かんたん申請</h3>
+        <p>買いたいものの金額・理由・写真を添えて家族に申請。カテゴリや優先度も設定できます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#9989;</div>
+        <h3>承認・差し戻し</h3>
+        <p>家族がワンタップで承認・条件付き承認・差し戻し。コメントで相談もできます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128101;</div>
+        <h3>グループ管理</h3>
+        <p>招待コードで家族を招待。複数の承認者を設定して、家族みんなで相談できます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128276;</div>
+        <h3>プッシュ通知</h3>
+        <p>新しい申請や承認結果をリアルタイムで通知。大事な相談を見逃しません。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128197;</div>
+        <h3>期限・利用予定</h3>
+        <p>セール期限や利用予定日を設定して、タイミングを逃さず相談できます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128172;</div>
+        <h3>コメント機能</h3>
+        <p>申請ごとにコメントで会話。「もう少し安いのは？」など気軽に相談できます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>無料でダウンロード</h2>
+    <p>家族のお金の相談を、もっとスムーズに</p>
+    <div class="store-badges">
+      <a href="https://play.google.com/store/apps/details?id=com.tanukidevelop.ouchiRingi">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png"
+             alt="Google Playで手に入れよう"
+             style="height: 90px; margin: -15px 0;">
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="https://logos-lab.net">logos-lab.net</a>
+    &nbsp;|&nbsp;
+    <a href="../privacy-policy.html">プライバシーポリシー</a>
+    <br>
+    &copy; 2026 Logos Lab
+  </footer>
+
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get('code');
+      if (code) {
+        document.getElementById('inviteSection').style.display = 'block';
+        document.getElementById('inviteCode').textContent = code;
+        document.getElementById('copyBtn').addEventListener('click', function() {
+          navigator.clipboard.writeText(code).then(function() {
+            document.getElementById('copyBtn').textContent = 'コピーしました';
+            setTimeout(function() {
+              document.getElementById('copyBtn').textContent = 'コードをコピー';
+            }, 2000);
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
